@@ -1,0 +1,5 @@
+{
+    "editor.defaultFormatter": "HookyQR.beautify",
+    "javascript.preferences.quoteStyle": "single",
+    "typescript.preferences.quoteStyle": "single"
+}
