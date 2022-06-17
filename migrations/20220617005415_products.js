@@ -5,7 +5,7 @@
 exports.up = function (knex) {
     return knex.schema.hasTable("products").then(function (exists) {
         if (!exists) {
-            knex.schema.createTable("products", function(table){
+            return knex.schema.createTable("products", function (table) {
                 table.increments("product_id").primary()
                 table.string("name").notNullable()
                 table.text("description")
@@ -22,9 +22,9 @@ exports.up = function (knex) {
  * @returns { Promise<void> }
  */
 exports.down = function (knex) {
-    knex.schema.hasTable("products").then(function (exists) {
+    return knex.schema.hasTable("products").then(function (exists) {
         if (exists) {
-            knex.schema.dropTable("products")
+            return knex.schema.dropTable("products")
         }
     })
 };
