@@ -1,3 +1,4 @@
+require('dotenv').config();
 
 const express = require('express')
 const app = express()
@@ -7,10 +8,6 @@ const routerAPI = require('./Routes/routesAPI')
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
-app.get('/', (req,res) => {
-    res.send('hola mundo')
-})
 
 app.use('/api/v1', routerAPI);
 

@@ -1,10 +1,17 @@
+const ModelProducts = require('../models/Products')
 
+const createProduct = (req, res) => {
 
-const createHome = (req, res) => {
-    //Aqui deberia crear mi Home
-    res.send({ message: 'Home Creado (FAKE)'})
+    ModelProducts.create(req.body)
+        .then((row) => {
+            res.status(201).send(row);
+        })
+        .catch((err) => {
+            res.status(400).send(err.message);
+        })
+
 }
 
 module.exports = {
-    createHome
-} 
+    createProduct
+}

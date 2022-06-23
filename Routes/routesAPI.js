@@ -5,6 +5,6 @@ const controllerAPI = require('../Controllers/controllerAPI')
 
 // Si la ruta es homes, ejecuta homeController y la funcion createHome
 
-router.get('/customers',(controllerAPI.createHome));
+router.post('/products',(controllerAPI.createProduct));
 
 module.exports = router; 

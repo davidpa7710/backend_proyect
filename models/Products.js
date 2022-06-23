@@ -1,8 +1,11 @@
 const knex = require('../config')
 
-const create = (bodyHome) => {
+const create = (body) => {
     return knex
-    .insert(bodyHome) // Datos a insertar
-    .into('homes') // ¿De qué tabla?
-    .returning(['house_id', 'title', 'description', 'guest', 'address', 'rental_price', 'fk_user', 'active', 'created_at'])
+    .insert(body)
+    .into('products') 
+    .returning(["product_id","name","description","price","sku"])
+}
+module.exports = {
+    create
 }
