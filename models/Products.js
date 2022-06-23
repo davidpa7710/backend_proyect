@@ -24,9 +24,24 @@ const updateProduct = (productId, bodyToUpdate) => {
     .where({product_id: productId})
     .returning(["product_id","name","description","price","sku"])
 }
+const deleteProduct = (productId) => {
+    return knex
+    .del()
+    .from('products')
+    .where({product_id: productId})
+}
+const softDeleteProduct = (productId) => {
+    return knex
+    .update({active: false})
+    .from('products')
+    .where({product_id: productId})
+}
+
 module.exports = {
     create,
     findAll,
     findOne,
-    updateProduct
+    updateProduct,
+    deleteProduct,
+    softDeleteProduct
 }

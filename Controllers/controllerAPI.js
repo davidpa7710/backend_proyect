@@ -42,11 +42,32 @@ const updateOneProduct = (req,res) => {
         res.status(400).send(err.message)
     })
 }
+const deleteOneProduct = (req, res) => {
+    ModelProducts.deleteProduct(req.params.idProduct)
+    .then(() => {
+        res.status(204).send()
+    })
+    .catch((err) => {
+        res.status(400).send(err.message)
+    })
+}
+const softDeleteOneProduct = (req, res) => {
+    ModelProducts.softDeleteProduct(req.params.idProduct)
+    .then(() => {
+        res.status(204).send()
+    })
+    .catch((err) => {
+        res.status(400).send(err.message)
+    })
+}
 
 
 module.exports = {
     createProduct,
     findAllProducts,
     findOneProduct,
-    updateOneProduct
+    updateOneProduct,
+    deleteOneProduct,
+    softDeleteOneProduct
+
 }
