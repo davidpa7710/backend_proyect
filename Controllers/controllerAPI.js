@@ -33,10 +33,20 @@ const findOneProduct = (req, res) => {
         })
 
 }
+const updateOneProduct = (req,res) => {
+    ModelProducts.updateProduct(req.params.idProduct, req.body)
+    .then((row) => {
+        res.status(200).send(row)
+    })
+    .catch((err) => {
+        res.status(400).send(err.message)
+    })
+}
 
 
 module.exports = {
     createProduct,
     findAllProducts,
-    findOneProduct
+    findOneProduct,
+    updateOneProduct
 }
