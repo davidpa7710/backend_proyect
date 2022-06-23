@@ -11,7 +11,32 @@ const createProduct = (req, res) => {
         })
 
 }
+const findAllProducts = (req, res) => {
+
+    ModelProducts.findAll()
+        .then((row) => {
+            res.status(200).send(row);
+        })
+        .catch((err) => {
+            res.status(400).send(err.message);
+        })
+
+}
+const findOneProduct = (req, res) => {
+
+    ModelProducts.findOne(req.params.idProduct)
+        .then((row) => {
+            res.status(200).send(row);
+        })
+        .catch((err) => {
+            res.status(400).send(err.message);
+        })
+
+}
+
 
 module.exports = {
-    createProduct
+    createProduct,
+    findAllProducts,
+    findOneProduct
 }
